@@ -1,9 +1,25 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body %}
 
-<p> Answer: {{current_answer}} </p>
-
-</p> Question: {{current_question}} </p>
-
-<form action = '/game' method = 'post'>
-    <button name = 'next_q' type = 'submit'> Next Question </button>
+<h2>Game is ON !!!</h2> 
+<h2> Let's Play </h2>
+<p>Select a category of question and enter your answer </p>
+<!-- <img src="{{ href }}" height=600 /> -->
+<form method="POST">
+<label for="Select Category">Choose a category:</label>
+<select name="category" id="category">
+<option value="animals">animals</option>
+<option value="inventions">inventions</option>
+<option value="music">music</option>
+<option value="history">history</option>
+</select>
+<input type="submit" value="Submit">
 </form>
+
+<form method="POST">
+<label>Enter your answer: </label>
+<input name="text">
+<input type="submit">
+</form>
+
+{% endblock %}

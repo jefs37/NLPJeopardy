@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<p> Answer: {{current_answer}} </p>
+
+</p> Question: {{current_question}} </p>
+
+<form action = '/learn' method = 'post'>
+    <button name = 'next_q' type = 'submit'> Next Question </button>
+</form>
+
+{% endblock %}
