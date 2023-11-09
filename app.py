@@ -6,7 +6,7 @@ pd.set_option('display.max_colwidth', None)
 
 app = Flask(__name__)
 
-df = pd.read_csv('cleaned_jeopardy.csv')
+df = pd.read_csv('jeopardy_full_questions_with_topics.csv')
 
 np.random.seed(37)
 rand_index = np.random.randint(0, df.shape[0], 1)
