@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<p> Answer: {{current_answer}} </p>
+<h1> Learn mode! </h1>
+<form action = 'learn' method = 'post'>
+    <select name = 'learn_category'>
+        {% for category in categories %}
+            <option value = '{{category}}' {% if category == current_category %}selected{% endif %}>
+                {{category}}
+            </option>
+        {% endfor %}
+    </select>
+    <button type = 'submit'> Next Question </button>
+</form>
+
+<p> Current Chosen Category: {{current_category}} </p>
+
+<p> Answer: {{current_answer}} <br><br> <br> <br> <br>  </p>
 
 </p> Question: {{current_question}} </p>
-
-<form action = '/learn' method = 'post'>
-    <button name = 'next_q' type = 'submit'> Next Question </button>
-</form>
 
 {% endblock %}
