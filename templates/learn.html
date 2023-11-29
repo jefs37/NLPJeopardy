@@ -1,31 +1,65 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<div style="text-align:center">
-    <h1> Learn mode! </h1>
-    <form action = 'learn' method = 'post'>
-        <select name = 'learn_category'>
-            {% for category in categories %}
-                <option category = '{{category}}' {% if category == current_category %}selected{% endif %}>
-                    {{category}}
-                </option>
-            {% endfor %}
-        </select>
-        <select name = 'learn_value'>
-            {% for clue_value in clue_values %}
-                <option clue_value = '{{clue_value}}' {% if clue_value == current_value %}selected{% endif %}>
-                    {{clue_value}}
-                </option>
-            {% endfor %}
-        </select>
-        <button type = 'submit'> Next Question </button>
-    </form>
+<style>
+    .centered-content {
+        width: 1000px;
+        height: 200px;
+        background-color: rgb(36, 198, 226);
+        padding: 30px;
+        border: 3px solid rgb(53, 68, 201);
+    
+    }
 
-    <p> Current Chosen Category: {{current_category}} </p>
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+    }
+    
+    .left-content {
+        padding: 20px;
+    }
 
-    <p> Answer: {{current_answer}} <br><br> <br> <br> <br>  </p>
+    form {
+        text-align: left;
+    }
+</style>
 
-    </p> Question: {{current_question}} </p>
+<div class = 'centered-container'>
+    <div class = 'centered-content'>
+        <h1> Learn mode! </h1>
+        <p> Select 0 for clue value if you would like to see questions of all clue values </p>
+        <form action = 'learn' method = 'post'>
+            <label> Category: </label>
+            <select name = 'learn_category'>
+                {% for category in categories %}
+                    <option category = '{{category}}' {% if category == current_category %}selected{% endif %}>
+                        {{category}}
+                    </option>
+                {% endfor %}
+            </select>
+            <br>
+            <label> Clue Value: </label>
+            <select name = 'learn_value'>
+                {% for clue_value in clue_values %}
+                    <option clue_value = '{{clue_value}}' {% if clue_value == current_value %}selected{% endif %}>
+                        {{clue_value}}
+                    </option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type = 'submit'> Next Question </button>
+        </form>
+    <div>
+    <div class = 'left-content'>
+        <p> You have currently chosen {{current_category}} with clue values of {{current_value}}. </p>
+
+        <p> Answer: {{current_answer}} </p>
+
+        </p> Question: {{current_question}} </p>
+    </div>
 </div>
 
 {% endblock %}
