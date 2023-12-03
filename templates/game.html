@@ -3,23 +3,75 @@
 
 <h2>Game is ON !!!</h2> 
 <h2> Let's Play </h2>
-<p>Select a category of question and enter your answer </p>
+<p>Select a category of answers and enter your question </p>
 <!-- <img src="{{ href }}" height=600 /> -->
 <form method="POST">
-<label for="Select Category">Choose a category:</label>
-<select name="category" id="category">
-<option value="animals">animals</option>
-<option value="inventions">inventions</option>
-<option value="music">music</option>
-<option value="history">history</option>
-</select>
-<input type="submit" value="Submit">
-</form>
+<label for="Select Category">Choose a Category:</label>
+<!-- <select name="Category" id="Category"> -->
+<select name="selected_option">  
 
-<form method="POST">
-<label>Enter your answer: </label>
-<input name="text">
-<input type="submit">
-</form>
+
+<option value="Music and Phrases"{% if category == current_category %}selected{% endif %}>
+    {{"Music and Phrases"}}</option>
+<option value="Music Facts & Some Bodies of Water"{% if category == current_category %}selected{% endif %}>
+    {{"Music Facts & Some Bodies of Water"}}</option>
+<option value="Government and Sports"{% if category == current_category %}selected{% endif %}>{{"Government and Sports"}}</option>
+<option value="International + Broadway"{% if category == current_category %}selected{% endif %}>{{"International + Broadway"}}</option>
+<option value="World Talk"{% if category == current_category %}selected{% endif %}>{{"World Talk"}}</option>
+<option value="Movies and Rhyme Time"{% if category == current_category %}selected{% endif %}>{{"Movies and Rhyme Time"}}</option>
+<option value="Literature and American History"{% if category == current_category %}selected{% endif %}>{{"Literature and American History"}}</option>
+<option value="TV"{% if category == current_category %}selected{% endif %}>{{"TV"}}</option>
+<option value="History"{% if category == current_category %}selected{% endif %}>{{"History"}}</option>
+<option value="Big Names"{% if category == current_category %}selected{% endif %}>{{"Big Names"}}</option>
+<option value="Singers and Potent Potables"{% if category == current_category %}selected{% endif %}>{{"Singers and Potent Potables"}}</option> 
+<style>  
+    .select-style {  
+        width: 300px;  
+        height: 35px;  
+    }  
+    </style>  
+    
+
+<br>
+
+
+<input type="submit" name="submit_button" value="Select Category"> 
+<br><br>
+
+
+<p> Selected Category: {{current_category}} </p><br>
+<p> Clue Value: {{current_value}} </p><br>
+<p>Answer: {{first_answer}}</p><br><br>
+
+<!DOCTYPE html>  
+<html>  
+<body>  
+    <!-- <h2>My Pop-up Question</h2>   -->
+    <button onclick="myFunction()">Click to enter the question</button>  
+    <p id="popup"></p>  
+    <script>  
+        async function myFunction() {  
+            var userInput = prompt("Please enter your question:");  
+            if (userInput != null) {  
+                const response = await fetch('/get_text', {  
+                    method: 'POST',  
+                    headers: {  
+                        'Content-Type': 'application/json'  
+                    },  
+                    body: JSON.stringify({text: userInput})  
+                });  
+                const data = await response.json();  
+                console.log(data);  
+            }  
+        }  
+    </script>  
+</body>  
+</html>
+
+<p>"Go to "Score" page to view your score"</p><br><br>
+
+
+<input type="submit" name="submit_button" value="Next Question"> 
+
 
 {% endblock %}

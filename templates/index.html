@@ -1,15 +1,38 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<div>
+<style>    
+    .normal-content{
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        text-align: left;
+    }
+</style>
+
+<div class = 'normal-content'>
     <h2>Introduction</h2>
-    <p> If you love playing "Jeopardy" game, this app is for you! <br>
-        Explore "Learn Mode" tab to learn about Jeopardy questions aired so far & Play a game on "Game Mode" tab <br>
+    <p> If you love watching or playing the "Jeopardy" game, this app is for you!
+        This app was created to showcase natural language processing in a fun and imaginative way,
+        using a dataset consisting of the vast majority of Jeopardy questions aired from season 1 to season 39. <br><br>
+        Our current functionality includes: <br><br>
+        <b>Wordclouds</b><br>
+        Explore "Wordclouds" to view some of the NLP visualizations we have created from the dataset!<br><br>
+        <b>Learn Mode</b><br>
+        Explore "Learn Mode" tab to learn about Jeopardy questions aired so far, with custom NLP classified categories and clue values!<br><br>
+        <b>Game Mode</b><br>
+        Play a game on "Game Mode" tab and test your Jeopardy knowledge against our NLP model selected questions,
+        complete with cosine similarity grading! <br>
+    </p>
+</div>
+
+<div class = 'normal-content'>
+    <i>
         This web app is created by <br>
         Swapnali Gujar, Tyler King, Jeff Shen <br>
         Indiana University of Bloomington <br>
         Course: INTRO TO NLP FOR DATA SCIENCE, Semester: Fall 2023 <br>
-    </p>
+    </i>
 </div>
 
 {% endblock %}
